@@ -39,11 +39,9 @@ const MORSE_TABLE = {
     '**********': ' ',
 };
 function decode(expr) {
-    let length = 10;
-    let string = expr.match(new RegExp(`.{1,${length}}`, 'g'));
-return string.map(item => MORSE_TABLE[item.replace(/11/g, '-').replace(/10/g, '.').replace(/0/g, '')]).join('')
+    let str = expr.match(new RegExp(`.{1,10}`, 'g'));
+return str.map(item => MORSE_TABLE[item.replaceAll(11, '-').replaceAll(10, '.').replaceAll(0, '')]).join('');
 }
 module.exports = {
     decode
 }
-
